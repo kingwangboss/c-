@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function() {
+            $('#btnAdd')
+                .click(function() {
+                    $.post(
+                        '@Url.Action("CalsAdd", "Home")',
+                        $('form').serialize(),
+                        function(msg) {
+                            $('#sum').val(msg);
+                        }
+                    );
+                });
+        });
+
+
+        function Success(obj) {
+            $('#result1').val(obj.Sum);
+        }
+    </script>
+
+</head>
+<body>
+<div>
+    <form>
+        <input type="text" name="calc1"/>+
+        <input type="text" name="calc2"/>
+        <input type="button" id="btnAdd" value="加"/>
+        <input type="text" name="sum" id="sum"/>
+    </form>
+    <hr/>
+
+    @using (Ajax.BeginForm("CalsAdd1", "Home", new AjaxOptions()
+    {
+        OnSuccess = "Success"
+
+    }))
+    {
+        <input type="text" name="calc1"/>
+        <span>+</span>
+        <input type="text" name="calc2"/>
+        <input type="submit" value="="/>
+        <input type="text" name="result1" id="result1"/>
+    }
+
+</div>
+</body>
+</html>

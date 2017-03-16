@@ -23,3 +23,16 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(function() {
+        var data = $("#form").seiJson();
+        $.ajax({
+            url: "/home/save",
+            type: "post",
+            data: data,
+            success:function(data) {
+                
+            }
+        });
+    });
+</script>

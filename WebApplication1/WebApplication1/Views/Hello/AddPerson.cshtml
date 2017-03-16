@@ -18,8 +18,7 @@
         <span>年龄：</span>
         @Html.TextBoxFor(person => person.Age);
         <span>QQ:</span>
-       // @Html.TextBoxFor(person => person.Qq);
-        @Html.TextBox(new Person().Qq);
+        @Html.TextBoxFor(person => person.Qq);
         <input type="submit"/>
     }
 </div>
